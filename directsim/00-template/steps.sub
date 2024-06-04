@@ -1,0 +1,18 @@
+executable            = steps.sh
+requirements          = (OpSysAndVer =?= "CentOS7")
+error                 = err/steps/$(ClusterId).$(ProcId).err
+output                = out/steps/$(ClusterId).$(ProcId).out
+log                   = log/steps/$(ClusterId).$(ProcId).log
++JobBatchName         = "full_steps_$(LABEL)"
++JobFlavour           = "workday"
+should_transfer_files = YES
+
+transfer_input_files  = step1.py,step2.py,step3.py,step4.py
+arguments             = $(Process) $(vCMSSW) $(EVTS) $(LABEL) $(BASE) $(TMIN) $(TMAX) $(XIMIN) $(XIMAX) $(ECMS)
+# 1: seed to be used as InitialSeed
+# 2: cmssw release
+# 3: number of events per file
+# 4: label for job outputs
+# 5-9: gne-level cuts
+
+queue $(FILES)
