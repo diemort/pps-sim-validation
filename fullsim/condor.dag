@@ -1,0 +1,16 @@
+SCRIPT PRE A common/init.sh
+JOB A steps.sub
+JOB B mergeval.sub
+SCRIPT POST B common/message.sh
+VARS ALL_NODES LABEL="condor-placeholder"
+VARS ALL_NODES vCMSSW="CMSSW_12_6_0"
+VARS ALL_NODES EVTS="250"
+VARS ALL_NODES FILES="5"
+VARS ALL_NODES BASE="/eos/cms/store/group/phys_pps/sim-validation/"
+VARS ALL_NODES SCRAM="slc7_amd64_gcc10"
+VARS A TMIN="0.0"
+VARS A TMAX="1.0"
+VARS A XIMIN="0.02"
+VARS A XIMAX="0.15"
+VARS ALL_NODES ECMS="14000."
+PARENT A CHILD B
